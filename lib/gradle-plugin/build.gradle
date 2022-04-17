@@ -1,0 +1,18 @@
+plugins {
+	id 'org.jetbrains.kotlin.jvm'
+	id 'java-gradle-plugin'
+}
+
+gradlePlugin {
+	plugins {
+		tracePlugin {
+			id = "trace"
+			implementationClass = "com.github.pvasilev.trace.TraceGradlePlugin"
+		}
+	}
+}
+
+dependencies {
+	implementation "org.jetbrains.kotlin:kotlin-stdlib"
+	implementation "org.jetbrains.kotlin:kotlin-gradle-plugin-api"
+}
