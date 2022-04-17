@@ -1,0 +1,20 @@
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (it.requested.id.name == "trace") {
+                useModule("com.github.pvasilev:trace-gradle-plugin:${it.requested.version}")
+            }
+        }
+    }
+}
+
+includeBuild("lib") {
+    dependencySubstitution {
+        substitute module("com.github.pvasilev:trace-gradle-plugin") with project(":gradle-plugin")
+        substitute module("com.github.pvasilev:trace-compiler-plugin") with project(":compiler-plugin")
+    }
+}
+
+rootProject.name = 'trace-plugin'
+
+include ":sample"
