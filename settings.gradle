@@ -6,6 +6,11 @@ pluginManagement {
             }
         }
     }
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
 }
 
 includeBuild("lib") {
