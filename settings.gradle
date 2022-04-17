@@ -12,6 +12,7 @@ includeBuild("lib") {
     dependencySubstitution {
         substitute module("com.github.pvasilev:trace-gradle-plugin") with project(":gradle-plugin")
         substitute module("com.github.pvasilev:trace-compiler-plugin") with project(":compiler-plugin")
+        substitute module("com.github.pvasilev:trace-runtime") with project(":runtime")
     }
 }
 

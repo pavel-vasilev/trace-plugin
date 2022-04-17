@@ -10,5 +10,6 @@ pluginManagement {
 
 include(
 	":gradle-plugin",
-	":compiler-plugin"
+	":compiler-plugin",
+	":runtime",
 )

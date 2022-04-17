@@ -10,6 +10,12 @@ import org.jetbrains.kotlin.gradle.plugin.SubpluginOption
 class TraceGradlePlugin : KotlinCompilerPluginSupportPlugin {
     override fun apply(target: Project) {
         target.extensions.create("trace", TraceExtension::class.java)
+        val runtimeDeps = target.dependencies.create("com.github.pvasilev:trace-runtime:1.0.0")
+        target.configurations.configureEach {
+            if (it.name == "implementation") {
+                it.dependencies.add(runtimeDeps)
+            }
+        }
     }
 
     override fun applyToCompilation(kotlinCompilation: KotlinCompilation<*>): Provider<List<SubpluginOption>> {
@@ -24,7 +30,7 @@ class TraceGradlePlugin : KotlinCompilerPluginSupportPlugin {
     override fun getCompilerPluginId(): String = "trace"
 
     override fun getPluginArtifact(): SubpluginArtifact =
-        SubpluginArtifact("com.github.pvasilev", "trace-gradle-plugin", "1.0.0")
+        SubpluginArtifact("com.github.pvasilev", "trace-compiler-plugin", "1.0.0")
 
     override fun isApplicable(kotlinCompilation: KotlinCompilation<*>): Boolean = true
 }
